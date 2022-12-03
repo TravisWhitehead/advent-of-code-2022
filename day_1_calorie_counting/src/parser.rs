@@ -4,11 +4,11 @@ use pear::{combinators::*, parsers::*};
 
 use crate::Calories;
 
-/// Block of calories lines recorded by a given elf.
-type ElfCalories = Vec<Calories>;
+/// Block of calories lines of foods recorded by a given elf.
+type ElfFoodsCalories = Vec<Calories>;
 
-/// Blocks of calories lines recorded by all elves.
-type ElvesCalories = Vec<ElfCalories>;
+/// Blocks of calories lines of foods recorded by all elves.
+type ElvesFoodsCalories = Vec<ElfFoodsCalories>;
 
 /// Use `Text` as the `Input`; this parses `char` tokens.
 type Input<'a> = Pear<Text<'a>>;
@@ -61,8 +61,8 @@ fn calories_line<'a>(input: &mut Input<'a>) -> Result<'a, Calories> {
 ///
 /// This parses a sequence of calories lines and eats a newline char if the next char matches.
 #[parser]
-fn elf_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElfCalories> {
-    let calories_lines: ElfCalories = try_collect(calories_line)?;
+fn elf_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElfFoodsCalories> {
+    let calories_lines: ElfFoodsCalories = try_collect(calories_line)?;
     eat_if(is_newline_char)?;
     calories_lines
 }
@@ -71,12 +71,12 @@ fn elf_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElfCalories> {
 ///
 /// This parses a sequence of blocks of calories lines.
 #[parser]
-fn elves_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElvesCalories> {
-    let calories_blocks: ElvesCalories = try_collect(elf_calories)?;
+fn elves_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElvesFoodsCalories> {
+    let calories_blocks: ElvesFoodsCalories = try_collect(elf_calories)?;
     calories_blocks
 }
 
 /// Parse `input` into `ElvesCalories` indicating the calories of the foods carried by each elf.
-pub(crate) fn parse_elves_calories(input: &str) -> ElvesCalories {
+pub(crate) fn parse_elves_foods_calories(input: &str) -> ElvesFoodsCalories {
     parse!(elves_calories: Text::from(input)).expect("Failed to parse input")
 }
