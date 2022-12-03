@@ -1,0 +1,3 @@
+[workspace]
+authors = [ "Travis Whitehead <traviswhitehead@hey.com>" ]
+members = ["day_1_calorie_counting"]
