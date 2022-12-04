@@ -75,6 +75,14 @@ I'm not prepared to assign any blame at the moment, just an observation for now.
 
 ## Day 2: Rock Paper Scissors
 
-### Day 1, Part 1
+### Day 2, Part 1
 
 It was straightforward to implement the Rock Paper Scissors game logic (yay enum variants). I again implemented a parser using `pear`, and this time around I'm pretty happy with it.
+
+### Day 2, Part 2
+
+Part 2 changed the interpretation of the second column of the strategy guide to refer to the desired outcome instead of the move to choose.
+
+Achieve this was just a matter of extendeding the parsing functionality to interpret the strategy guide both ways and adding a few methods around the game logic.
+
+I also threw in a `PartialOrd` implementation for `Move` because the meaning of the comparison traits often escapes me; it was good for learning, but didn't add much value I think.
