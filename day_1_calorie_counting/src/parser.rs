@@ -80,3 +80,31 @@ fn elves_calories<'a>(input: &mut Input<'a>) -> Result<'a, ElvesFoodsCalories> {
 pub(crate) fn parse_elves_foods_calories(input: &str) -> ElvesFoodsCalories {
     parse!(elves_calories: Text::from(input)).expect("Failed to parse input")
 }
+
+#[cfg(test)]
+mod test {
+    use crate::parser::parse_elves_foods_calories;
+
+    #[test]
+    pub fn test_parse_elves_foods_calories() {
+        const INPUT: &str = "\
+100
+400
+
+900
+
+200
+200
+800
+
+1000
+
+";
+
+        let elves_foods_calories = parse_elves_foods_calories(INPUT);
+        assert_eq!(
+            elves_foods_calories,
+            vec![vec![100, 400], vec![900], vec![200, 200, 800], vec![1000]]
+        );
+    }
+}

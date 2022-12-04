@@ -4,6 +4,7 @@ use std::{fmt::Display, fs, ops::Deref};
 
 use parser::parse_elves_foods_calories;
 
+// TODO: Be flexible about whether this path is for crate or workspace dir.
 static INPUT_FILE: &str = "../inputs/day1.txt";
 
 /// A quantity of calories.
@@ -109,7 +110,7 @@ fn main() {
 mod test {
     use crate::{
         elves_calories, greatest_calories_carried, total_calories_of_most_snack_ready_elves,
-        INPUT_FILE,
+        Calories, ElvesCalories, INPUT_FILE,
     };
 
     #[test]
@@ -142,5 +143,24 @@ mod test {
         //     total_calories_of_most_snack_ready_elves(&elves_calories, 3),
         //     TODO
         // );
+    }
+
+    #[test]
+    fn elves_calories_is_sorted() {
+        let unsorted_elves_calories: Vec<Calories> = vec![2, 1, 7, 3, 0, 5, 9, 4, 6, 8];
+
+        let elves_calories = ElvesCalories::new(unsorted_elves_calories);
+
+        assert_eq!(*elves_calories, vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
+    }
+
+    #[test]
+    fn elves_calories_from_elves_foods_calories() {
+        let elves_foods_calories: Vec<Vec<Calories>> =
+            vec![vec![100, 200], vec![7, 3], vec![10000]];
+
+        let elves_calories = ElvesCalories::from(elves_foods_calories);
+
+        assert_eq!(*elves_calories, vec![10000, 300, 10]);
     }
 }
