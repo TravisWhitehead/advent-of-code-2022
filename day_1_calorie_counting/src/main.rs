@@ -93,7 +93,16 @@ fn total_calories_of_most_snack_ready_elves(
 }
 
 fn main() {
-    println!("{}", greatest_calories_carried(INPUT_FILE));
+    let elves_calories = elves_calories(INPUT_FILE);
+
+    println!(
+        "The snack-readiest elf is carrying {} calories.",
+        greatest_calories_carried(&elves_calories)
+    );
+    println!(
+        "The 3 most snack-ready elves are carrying a WHOPPING total of {} calories.",
+        total_calories_of_most_snack_ready_elves(&elves_calories, 3)
+    );
 }
 
 #[cfg(test)]
