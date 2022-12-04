@@ -1,6 +1,6 @@
 use std::fs;
 
-use parser::parse_strategy_guide;
+use parser::parse_moves_strategy_guide;
 
 mod parser;
 
@@ -76,9 +76,9 @@ impl Round {
     }
 }
 
-fn strategy_guide(input_file: &str) -> Vec<Round> {
+fn moves_strategy_guide(input_file: &str) -> Vec<Round> {
     let input = fs::read_to_string(input_file).expect("Failed to read input file");
-    parse_strategy_guide(&input)
+    parse_moves_strategy_guide(&input)
 }
 
 /// Returns the final score of multiple rounds of rock paper scissors.
@@ -87,7 +87,7 @@ fn total_score(rounds: Vec<Round>) -> Score {
 }
 
 fn main() {
-    let final_score = total_score(strategy_guide(INPUT_FILE));
+    let final_score = total_score(moves_strategy_guide(INPUT_FILE));
     println!(
         "Following the strategy guide would result in a final score of {}.",
         final_score
@@ -96,17 +96,17 @@ fn main() {
 
 #[cfg(test)]
 mod test {
-    use crate::{strategy_guide, total_score, INPUT_FILE};
+    use crate::{moves_strategy_guide, total_score, INPUT_FILE};
 
     #[test]
     fn solve_day_2() {
-        assert_eq!(total_score(strategy_guide(INPUT_FILE)), 14264)
+        assert_eq!(total_score(moves_strategy_guide(INPUT_FILE)), 14264)
     }
 
     #[test]
     fn solve_day_2_example() {
         assert_eq!(
-            total_score(strategy_guide("../inputs/day2-example.txt")),
+            total_score(moves_strategy_guide("../inputs/day2-example.txt")),
             15
         )
     }

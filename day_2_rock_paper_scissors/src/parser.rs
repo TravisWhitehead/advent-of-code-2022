@@ -44,8 +44,9 @@ fn encoded_move<'a>(input: &mut Input<'a>) -> Result<'a, Move> {
     decode_move(&eat_if(is_move_byte)?).or_else(|e| parse_error!("{}", e)?)
 }
 
+/// Parse the line as the opponent's move and the player's move.
 #[parser]
-fn round_line<'a>(input: &mut Input<'a>) -> Result<'a, Round> {
+fn round_moves_line<'a>(input: &mut Input<'a>) -> Result<'a, Round> {
     let opponent = encoded_move()?;
     eat(b' ')?;
     let player = encoded_move()?;
@@ -54,12 +55,12 @@ fn round_line<'a>(input: &mut Input<'a>) -> Result<'a, Round> {
 }
 
 #[parser]
-fn strategy_guide<'a>(input: &mut Input<'a>) -> Result<'a, Vec<Round>> {
-    let rounds: Vec<Round> = collect(round_line)?;
+fn moves_strategy_guide<'a>(input: &mut Input<'a>) -> Result<'a, Vec<Round>> {
+    let rounds: Vec<Round> = collect(round_moves_line)?;
     rounds
 }
 
-pub(crate) fn parse_strategy_guide(input: &str) -> Vec<Round> {
+pub(crate) fn parse_moves_strategy_guide(input: &str) -> Vec<Round> {
     let mut cursor = Input::new(input.as_bytes());
-    strategy_guide(&mut cursor).expect("Failed to parse strategy guide from input")
+    moves_strategy_guide(&mut cursor).expect("Failed to parse moves strategy guide from input")
 }
