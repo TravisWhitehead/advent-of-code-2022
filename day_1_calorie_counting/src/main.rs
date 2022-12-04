@@ -98,10 +98,40 @@ fn main() {
 
 #[cfg(test)]
 mod test {
-    use crate::{greatest_calories_carried, INPUT_FILE};
+    use crate::{
+        elves_calories, greatest_calories_carried, total_calories_of_most_snack_ready_elves,
+        INPUT_FILE,
+    };
 
     #[test]
-    fn solve_day_1() {
-        assert_eq!(greatest_calories_carried(INPUT_FILE), 67658);
+    fn day_1_part_1_example() {
+        let elves_calories = elves_calories("../inputs/day1-example.txt");
+        assert_eq!(greatest_calories_carried(&elves_calories), 24000);
+    }
+
+    #[test]
+    fn solve_day_1_part_1() {
+        let elves_calories = elves_calories(INPUT_FILE);
+        assert_eq!(greatest_calories_carried(&elves_calories), 67658);
+    }
+
+    #[test]
+    fn day_1_part_2_example() {
+        let elves_calories = elves_calories("../inputs/day1-example.txt");
+        assert_eq!(
+            total_calories_of_most_snack_ready_elves(&elves_calories, 3),
+            45000
+        );
+    }
+
+    #[ignore]
+    #[test]
+    fn solve_day_1_part_2() {
+        let elves_calories = elves_calories(INPUT_FILE);
+        todo!()
+        // assert_eq!(
+        //     total_calories_of_most_snack_ready_elves(&elves_calories, 3),
+        //     TODO
+        // );
     }
 }
