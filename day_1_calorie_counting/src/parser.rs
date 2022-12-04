@@ -1,3 +1,5 @@
+#![allow(clippy::result_large_err)]
+
 use pear::input::{Pear, Text};
 use pear::macros::{parse, parse_error, parser};
 use pear::{combinators::*, parsers::*};
