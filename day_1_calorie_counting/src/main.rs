@@ -134,15 +134,13 @@ mod test {
         );
     }
 
-    #[ignore]
     #[test]
     fn solve_day_1_part_2() {
         let elves_calories = elves_calories(INPUT_FILE);
-        todo!()
-        // assert_eq!(
-        //     total_calories_of_most_snack_ready_elves(&elves_calories, 3),
-        //     TODO
-        // );
+        assert_eq!(
+            total_calories_of_most_snack_ready_elves(&elves_calories, 3),
+            200158
+        );
     }
 
     #[test]
