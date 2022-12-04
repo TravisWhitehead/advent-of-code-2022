@@ -2,6 +2,8 @@
 
 This repo holds my work on Advent of Code in December 2022. My participation in AoC this year is mostly a pursuit in continuing to learn Rust.
 
+Below are not really writeups, they're more notes to self, musings, complaints, etc.
+
 ## Day 1: Calorie Counting
 
 ### Day 1, Part 1
@@ -70,3 +72,9 @@ I took a peek at the HTML and I see that Bitwarden is instrumenting forms to som
 ```
 
 I'm not prepared to assign any blame at the moment, just an observation for now... For all I know I typo'd the answer multiple times.
+
+## Day 2: Rock Paper Scissors
+
+### Day 1, Part 1
+
+It was straightforward to implement the Rock Paper Scissors game logic (yay enum variants). I again implemented a parser using `pear`, and this time around I'm pretty happy with it.
