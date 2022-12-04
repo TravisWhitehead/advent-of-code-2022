@@ -10,6 +10,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_2_rock_paper_scissors"
+version = "0.1.0"
+
+[[package]]
 name = "inlinable_string"
 version = "0.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
