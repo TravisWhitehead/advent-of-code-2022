@@ -4,7 +4,9 @@ This repo holds my work on Advent of Code in December 2022. My participation in 
 
 ## Day 1: Calorie Counting
 
-### Parsing with Pear
+### Day 1, Part 1
+
+#### Parsing with Pear
 
 I took Day 1 as an opportunity to play around with [`pear`](https://crates.io/crates/pear), an ominous parsing library that piqued my curiosity when I noticed it in `figment`'s dependency. It's lacking a README and some amount of documentation, but it appears to be used in `rocket` to provide some HTTP-related parsing functionality (and is used in `figment`) as well.
 
@@ -12,7 +14,7 @@ The grammar of the input data is so simple that it would be simpler to just loop
 
 The parser is not fully correct because it assumes some newlines at the end of the file which don't exist in the input (since newlines are only needed to delimit between calorie lines and blocks of elves' calories, the extra whitespace is not included at the end of the file). I initially started looking at fixing that, but decided to just tweak the input and move on.
 
-### Debug Optimizations and --release
+#### Debug Optimizations and --release
 
 Solving Day 1 increased my appreciation for the performance distinctions of building with debug optimizations vs for `--release`. I would not be surprised if my code is just sloppy & non-performant, but it runs markedly slowly without the `--release` flag.
 
@@ -45,3 +47,26 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 big-donut in advent-of-code on  main [?] is 📦 v0.1.0 via 🦀 v1.65.0 
 ```
+
+### Day 1, Part 2
+
+Part 2 was frustrating because I had the correct answer from the beginning, but the value I submitted was reported as incorrect.
+
+After writing more tests and trying to think through where I was going wrong (to no avail), I tried submitting the answer a third time, and it was correct.
+
+I have no idea what's up there-- I wonder if some browser autofill or extensions could be fucking with my forms...
+
+I took a peek at the HTML and I see that Bitwarden is instrumenting forms to some degree, even when locked:
+
+```html
+<form method="post" action="1/answer">
+  <input type="hidden" name="level" value="2">
+  <p>
+    Answer:
+    <input type="text" name="answer" autocomplete="off" data-com.bitwarden.browser.user-edited="yes">
+    <input type="submit" value="[Submit]">
+  </p>
+</form>
+```
+
+I'm not prepared to assign any blame at the moment, just an observation for now... For all I know I typo'd the answer multiple times.
