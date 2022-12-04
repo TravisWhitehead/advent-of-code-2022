@@ -62,7 +62,7 @@ impl From<Vec<Vec<Calories>>> for ElvesCalories {
 
 /// Returns [`ElvesCalories`] parsed from input data in `input_file`.
 fn elves_calories(input_file: &str) -> ElvesCalories {
-    let input = fs::read_to_string(input_file).expect("Failed to read input.txt");
+    let input = fs::read_to_string(input_file).expect("Failed to read input file");
 
     // Parse the input into a list of what each elf recorded (a list of calories of foods they are carrying).
     let elves_foods_calories: Vec<Vec<Calories>> = parse_elves_foods_calories(&input);
