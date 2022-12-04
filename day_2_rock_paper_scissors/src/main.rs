@@ -1,3 +1,11 @@
+use std::fs;
+
+use parser::parse_strategy_guide;
+
+mod parser;
+
+static INPUT_FILE: &str = "../inputs/day2.txt";
+
 type Score = u32;
 
 /// Possible moves with different score values in Rock Paper Scissors.
@@ -68,24 +76,38 @@ impl Round {
     }
 }
 
+fn strategy_guide(input_file: &str) -> Vec<Round> {
+    let input = fs::read_to_string(input_file).expect("Failed to read input file");
+    parse_strategy_guide(&input)
+}
+
 /// Returns the final score of multiple rounds of rock paper scissors.
 fn total_score(rounds: Vec<Round>) -> Score {
     rounds.iter().map(|round| round.score()).sum()
 }
 
 fn main() {
-    println!("Hello, world!");
+    let final_score = total_score(strategy_guide(INPUT_FILE));
+    println!(
+        "Following the strategy guide would result in a final score of {}.",
+        final_score
+    )
 }
 
 #[cfg(test)]
 mod test {
-    #[ignore]
+    use crate::{strategy_guide, total_score, INPUT_FILE};
+
     #[test]
-    fn day_2_example() {
-        todo!()
+    fn solve_day_2() {
+        assert_eq!(total_score(strategy_guide(INPUT_FILE)), 14264)
     }
 
-    #[ignore]
     #[test]
-    fn solve_day_2_example() {}
+    fn solve_day_2_example() {
+        assert_eq!(
+            total_score(strategy_guide("../inputs/day2-example.txt")),
+            15
+        )
+    }
 }
