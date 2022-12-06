@@ -83,6 +83,16 @@ It was straightforward to implement the Rock Paper Scissors game logic (yay enum
 
 Part 2 changed the interpretation of the second column of the strategy guide to refer to the desired outcome instead of the move to choose.
 
-Achieve this was just a matter of extendeding the parsing functionality to interpret the strategy guide both ways and adding a few methods around the game logic.
+Achieve this was just a matter of extending the parsing functionality to interpret the strategy guide both ways and adding a few methods around the game logic.
 
 I also threw in a `PartialOrd` implementation for `Move` because the meaning of the comparison traits often escapes me; it was good for learning, but didn't add much value I think.
+
+## Day 3: Rucksack Reorganization
+
+### Day 3, Part 1
+
+The input format for this challenge was so simple that I opted to just read in the lines instead of writing a parser (like in previous challenges), but this came with the drawback that I was not motivated to do any validation on that. Part of me feels that kind of validation isn't really necessary for quick puzzles, but part of me likes having it.
+
+### Day 3, Part 2
+
+TODO
