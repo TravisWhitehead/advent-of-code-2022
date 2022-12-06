@@ -30,6 +30,9 @@ dependencies = [
 [[package]]
 name = "day_5_supply_stacks"
 version = "0.1.0"
+dependencies = [
+ "pear",
+]
 
 [[package]]
 name = "inlinable_string"
