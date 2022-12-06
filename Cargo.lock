@@ -23,6 +23,9 @@ version = "0.1.0"
 [[package]]
 name = "day_4_camp_cleanup"
 version = "0.1.0"
+dependencies = [
+ "pear",
+]
 
 [[package]]
 name = "inlinable_string"
