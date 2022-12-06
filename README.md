@@ -95,4 +95,4 @@ The input format for this challenge was so simple that I opted to just read in t
 
 ### Day 3, Part 2
 
-TODO
+Overall I'm not really happy with Day 3; mixing the representation of Rucksacks as a `String` but items as a tuple struct containing a `char` resulted in somewhat ugly/disparate code.
