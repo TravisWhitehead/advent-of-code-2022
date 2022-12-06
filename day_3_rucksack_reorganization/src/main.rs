@@ -4,7 +4,7 @@ use std::{
     path::Path,
 };
 
-static INPUT_FILE: &str = "../inputs/day3.txt";
+static INPUT_FILE: &str = "inputs/day3.txt";
 
 #[derive(Debug)]
 struct Item(char);

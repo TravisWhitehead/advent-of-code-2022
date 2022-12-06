@@ -4,7 +4,7 @@ use parser::{parse_moves_strategy_guide, parse_outcomes_strategy_guide};
 
 mod parser;
 
-static INPUT_FILE: &str = "../inputs/day2.txt";
+static INPUT_FILE: &str = "inputs/day2.txt";
 
 type Score = u32;
 
@@ -141,6 +141,8 @@ fn main() {
 
 #[cfg(test)]
 mod test {
+    static EXAMPLE_INPUT_FILE: &str = "inputs/day2-example.txt";
+
     use crate::{
         rounds_from_moves_strategy_guide, rounds_from_outcomes_strategy_guide, total_score,
         INPUT_FILE,
@@ -157,9 +159,7 @@ mod test {
     #[test]
     fn solve_day_2_example_part_1() {
         assert_eq!(
-            total_score(rounds_from_moves_strategy_guide(
-                "../inputs/day2-example.txt"
-            )),
+            total_score(rounds_from_moves_strategy_guide(EXAMPLE_INPUT_FILE)),
             15
         )
     }
@@ -175,9 +175,7 @@ mod test {
     #[test]
     fn solve_day_2_example_part_2() {
         assert_eq!(
-            total_score(rounds_from_outcomes_strategy_guide(
-                "../inputs/day2-example.txt"
-            )),
+            total_score(rounds_from_outcomes_strategy_guide(EXAMPLE_INPUT_FILE)),
             12
         )
     }

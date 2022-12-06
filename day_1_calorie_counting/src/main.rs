@@ -4,8 +4,7 @@ use std::{fmt::Display, fs, ops::Deref};
 
 use parser::parse_elves_foods_calories;
 
-// TODO: Be flexible about whether this path is for crate or workspace dir.
-static INPUT_FILE: &str = "../inputs/day1.txt";
+static INPUT_FILE: &str = "inputs/day1.txt";
 
 /// A quantity of calories.
 type Calories = u32;
@@ -113,9 +112,11 @@ mod test {
         Calories, ElvesCalories, INPUT_FILE,
     };
 
+    static EXAMPLE_INPUT_FILE: &str = "inputs/day1-example.txt";
+
     #[test]
     fn day_1_part_1_example() {
-        let elves_calories = elves_calories("../inputs/day1-example.txt");
+        let elves_calories = elves_calories(EXAMPLE_INPUT_FILE);
         assert_eq!(greatest_calories_carried(&elves_calories), 24000);
     }
 
@@ -127,7 +128,7 @@ mod test {
 
     #[test]
     fn day_1_part_2_example() {
-        let elves_calories = elves_calories("../inputs/day1-example.txt");
+        let elves_calories = elves_calories(EXAMPLE_INPUT_FILE);
         assert_eq!(
             total_calories_of_most_snack_ready_elves(&elves_calories, 3),
             45000
