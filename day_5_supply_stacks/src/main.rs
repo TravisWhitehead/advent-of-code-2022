@@ -1,5 +1,7 @@
 use std::fs;
 
+mod parser;
+
 static INPUT_FILE: &str = "inputs/day5.txt";
 
 /// Returns the crate that ends up at the top of the stack.
